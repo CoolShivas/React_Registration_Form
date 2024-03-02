@@ -39,7 +39,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
             <div className="main_div">
                 <div>
                     <label htmlFor="username"
-                        style={{ color: !valFieldBlankColor ? "red" : "green" }}
+                        style={{ color: !valFieldBlankColor ? "red" : "black" }}
                     > Username </label>
                 </div>
 
@@ -47,18 +47,20 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
                     <input type="text" id="username"
                         onChange={handleOnChangeUserName}
                         value={valUser}
-
+                        style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
                     />
                 </div>
 
                 <div>
                     <label htmlFor="age"
-                        style={{ color: !valFieldBlankColor ? "red" : "green" }}
+                        style={{ color: !valFieldBlankColor ? "red" : "black" }}
                     > Age (Years) </label>
                 </div>
 
                 <div>
-                    <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber} />
+                    <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber}
+                        style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
+                    />
                 </div>
 
                 <div>
