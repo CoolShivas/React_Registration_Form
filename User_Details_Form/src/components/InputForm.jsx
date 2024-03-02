@@ -1,5 +1,8 @@
+import classes from "./InputForm.module.css";
+import Card from "../UI/Card";
 import { useState } from "react";
-import styles from "./InputForm.module.css";
+// import styles from "./InputForm.module.css";
+
 
 const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
@@ -25,30 +28,32 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     }
 
-    return <form onSubmit={handleOnSubmit}>
-        <div className={styles.main_div}>
-            <div>
-                <label htmlFor="username"> Username </label>
+    return <Card classNameModCss={classes.input}>
+        <form onSubmit={handleOnSubmit}>
+            <div className="main_div">
+                <div>
+                    <label htmlFor="username"> Username </label>
+                </div>
+
+                <div>
+                    <input type="text" id="username" onChange={handleOnChangeUserName} value={valUser} />
+                </div>
+
+                <div>
+                    <label htmlFor="age"> Age (Years) </label>
+                </div>
+
+                <div>
+                    <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber} />
+                </div>
+
+                <div>
+                    <button type="submit"> Add Details </button>
+                </div>
             </div>
 
-            <div>
-                <input type="text" id="username" onChange={handleOnChangeUserName} value={valUser} />
-            </div>
-
-            <div>
-                <label htmlFor="age"> Age </label>
-            </div>
-
-            <div>
-                <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber} />
-            </div>
-
-            <div>
-                <button type="submit"> Add Details </button>
-            </div>
-        </div>
-
-    </form>
+        </form>
+    </Card>
 }
 
 export default InputForm;
