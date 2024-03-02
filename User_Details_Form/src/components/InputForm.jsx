@@ -28,6 +28,10 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
             setFieldBlankColor(false);
             return;
         }
+        if (+valNumber < 1) {
+            setFieldBlankColor(false);
+            return;
+        }
         handleOnAddDetailsOnBtnABC(valUser, valNumber);
         setUser('');
         setNumber('');
