@@ -1,3 +1,4 @@
+import Button from "../UI/Button";
 import classes from "./InputForm.module.css";
 import Card from "../UI/Card";
 import { useState } from "react";
@@ -48,7 +49,9 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
                 </div>
 
                 <div>
-                    <button type="submit"> Add Details </button>
+                    {/* <button type="submit"> Add Details </button> */}
+
+                    <Button type="submit"> Add Details </Button>
                 </div>
             </div>
 
