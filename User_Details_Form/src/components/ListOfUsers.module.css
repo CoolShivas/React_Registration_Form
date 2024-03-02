@@ -1,4 +1,20 @@
-.list_of_users {
+/* .list_of_users {
     color: white;
     font-size: 50px;
+} */
+
+
+.list_of_users {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.list_of_users ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.list_of_users li {
+    border: 1px solid #ccc;
 }

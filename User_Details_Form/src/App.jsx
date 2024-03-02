@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Card from "./UI/Card";
+// import Card from "./UI/Card";
 import InputForm from "./components/InputForm";
 import ListOfUsers from "./components/ListOfUsers";
 
@@ -22,7 +22,7 @@ function App() {
     setDetails(dataFill);
   }
 
-  return <Card>
+  return <>
     <InputForm
       handleOnAddDetailsOnBtnABC={handleOnAddDetailsOnBtn}
     ></InputForm>
@@ -32,7 +32,7 @@ function App() {
       detailsOfUsersABC={valDetails}
     ></ListOfUsers>
 
-  </Card>
+  </>
 }
 
 export default App;
