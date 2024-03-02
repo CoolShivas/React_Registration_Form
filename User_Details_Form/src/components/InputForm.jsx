@@ -24,7 +24,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         console.log('submitted')
-        if (valUser.trim().length === 0 && valNumber.trim().length === 0) {
+        if (valUser.trim().length === 0 || valNumber.trim().length === 0) {
             setFieldBlankColor(false);
             return;
         }
