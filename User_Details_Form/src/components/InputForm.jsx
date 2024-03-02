@@ -23,6 +23,9 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         console.log('submitted')
+        if (valUser.trim().length === 0 && valNumber.trim().length === 0) {
+            return;
+        }
         handleOnAddDetailsOnBtnABC(valUser, valNumber);
         setUser('');
         setNumber('');
@@ -37,7 +40,10 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
                 </div>
 
                 <div>
-                    <input type="text" id="username" onChange={handleOnChangeUserName} value={valUser} />
+                    <input type="text" id="username"
+                        onChange={handleOnChangeUserName}
+                        value={valUser}
+                    />
                 </div>
 
                 <div>
