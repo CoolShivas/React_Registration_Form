@@ -9,6 +9,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     const [valUser, setUser] = useState('');
     const [valNumber, setNumber] = useState('');
+    const [valFieldBlankColor, setFieldBlankColor] = useState(true);
 
     const handleOnChangeUserName = (event) => {
         console.log(event.target.value);
@@ -24,6 +25,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
         event.preventDefault();
         console.log('submitted')
         if (valUser.trim().length === 0 && valNumber.trim().length === 0) {
+            setFieldBlankColor(false);
             return;
         }
         handleOnAddDetailsOnBtnABC(valUser, valNumber);
@@ -36,18 +38,23 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
         <form onSubmit={handleOnSubmit}>
             <div className="main_div">
                 <div>
-                    <label htmlFor="username"> Username </label>
+                    <label htmlFor="username"
+                        style={{ color: !valFieldBlankColor ? "red" : "green" }}
+                    > Username </label>
                 </div>
 
                 <div>
                     <input type="text" id="username"
                         onChange={handleOnChangeUserName}
                         value={valUser}
+
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="age"> Age (Years) </label>
+                    <label htmlFor="age"
+                        style={{ color: !valFieldBlankColor ? "red" : "green" }}
+                    > Age (Years) </label>
                 </div>
 
                 <div>
