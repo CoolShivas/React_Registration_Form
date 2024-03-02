@@ -1,3 +1,4 @@
+import ErrorMsg from "../UI/ErrorMsg";
 import Button from "../UI/Button";
 import classes from "./InputForm.module.css";
 import Card from "../UI/Card";
@@ -38,44 +39,47 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     }
 
-    return <Card className={`${classes.input} ${classes.button}`}>
-        <form onSubmit={handleOnSubmit}>
-            <div className="main_div">
-                <div>
-                    <label htmlFor="username"
-                        style={{ color: !valFieldBlankColor ? "red" : "black" }}
-                    > Username </label>
+    return <div>
+        <ErrorMsg titleABC="An error occured" messageABC="Something went wrong"></ErrorMsg>
+        <Card className={`${classes.input} ${classes.button}`}>
+            <form onSubmit={handleOnSubmit}>
+                <div className="main_div">
+                    <div>
+                        <label htmlFor="username"
+                            style={{ color: !valFieldBlankColor ? "red" : "black" }}
+                        > Username </label>
+                    </div>
+
+                    <div>
+                        <input type="text" id="username"
+                            onChange={handleOnChangeUserName}
+                            value={valUser}
+                            style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="age"
+                            style={{ color: !valFieldBlankColor ? "red" : "black" }}
+                        > Age (Years) </label>
+                    </div>
+
+                    <div>
+                        <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber}
+                            style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
+                        />
+                    </div>
+
+                    <div>
+                        {/* <button type="submit"> Add Details </button> */}
+
+                        <Button type="submit"> Add Details </Button>
+                    </div>
                 </div>
 
-                <div>
-                    <input type="text" id="username"
-                        onChange={handleOnChangeUserName}
-                        value={valUser}
-                        style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="age"
-                        style={{ color: !valFieldBlankColor ? "red" : "black" }}
-                    > Age (Years) </label>
-                </div>
-
-                <div>
-                    <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber}
-                        style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
-                    />
-                </div>
-
-                <div>
-                    {/* <button type="submit"> Add Details </button> */}
-
-                    <Button type="submit"> Add Details </Button>
-                </div>
-            </div>
-
-        </form>
-    </Card>
+            </form>
+        </Card>
+    </div>
 }
 
 export default InputForm;

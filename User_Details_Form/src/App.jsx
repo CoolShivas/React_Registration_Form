@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 // import Card from "./UI/Card";
 import InputForm from "./components/InputForm";
@@ -23,6 +24,7 @@ function App() {
   }
 
   return <>
+
     <InputForm
       handleOnAddDetailsOnBtnABC={handleOnAddDetailsOnBtn}
     ></InputForm>
