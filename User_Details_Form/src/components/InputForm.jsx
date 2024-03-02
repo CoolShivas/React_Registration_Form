@@ -28,7 +28,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     }
 
-    return <Card classNameModCss={classes.input}>
+    return <Card classNameModCss={`${classes.input} ${classes.button}`}>
         <form onSubmit={handleOnSubmit}>
             <div className="main_div">
                 <div>
