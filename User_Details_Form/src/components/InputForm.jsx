@@ -10,7 +10,8 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     const [valUser, setUser] = useState('');
     const [valNumber, setNumber] = useState('');
-    const [valFieldBlankColor, setFieldBlankColor] = useState(true);
+
+    const [error, setError] = useState();
 
     const handleOnChangeUserName = (event) => {
         console.log(event.target.value);
@@ -25,12 +26,27 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         console.log('submitted')
+        // if (valUser.trim().length === 0 || valNumber.trim().length === 0) {
+        //     setFieldBlankColor(false);
+        //     return;
+        // }
+        // if (+valNumber < 1) {
+        //     setFieldBlankColor(false);
+        //     return;
+        // }
+
         if (valUser.trim().length === 0 || valNumber.trim().length === 0) {
-            setFieldBlankColor(false);
+            setError({
+                title: "Invalid Input",
+                message: "Please enter a valid name and age (non-empty values).",
+            })
             return;
         }
         if (+valNumber < 1) {
-            setFieldBlankColor(false);
+            setError({
+                title: "Invalid number",
+                message: "Please enter a valid age (>0)."
+            })
             return;
         }
         handleOnAddDetailsOnBtnABC(valUser, valNumber);
@@ -39,14 +55,22 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
     }
 
+
+    const errorHandlerBtn = () => {
+        setError(null);
+    }
+
     return <div>
-        <ErrorMsg titleABC="An error occured" messageABC="Something went wrong"></ErrorMsg>
+        {error && <ErrorMsg
+            titleABC={error.title}
+            messageABC={error.message}
+            errorHandlerBtnABC={errorHandlerBtn}
+        ></ErrorMsg>}
         <Card className={`${classes.input} ${classes.button}`}>
             <form onSubmit={handleOnSubmit}>
                 <div className="main_div">
                     <div>
                         <label htmlFor="username"
-                            style={{ color: !valFieldBlankColor ? "red" : "black" }}
                         > Username </label>
                     </div>
 
@@ -54,19 +78,16 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
                         <input type="text" id="username"
                             onChange={handleOnChangeUserName}
                             value={valUser}
-                            style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
                         />
                     </div>
 
                     <div>
                         <label htmlFor="age"
-                            style={{ color: !valFieldBlankColor ? "red" : "black" }}
                         > Age (Years) </label>
                     </div>
 
                     <div>
                         <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber}
-                            style={{ borderColor: !valFieldBlankColor ? "blue" : "black", background: !valFieldBlankColor ? "yellow" : "transparent" }}
                         />
                     </div>
 

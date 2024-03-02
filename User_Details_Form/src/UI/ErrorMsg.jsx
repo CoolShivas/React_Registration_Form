@@ -2,8 +2,8 @@ import classes from "./ErrorMsg.module.css";
 import Card from "./Card";
 import Button from "./Button";
 
-const ErrorMsg = ({ titleABC, messageABC }) => {
-    return <div className={classes.backdrop}>
+const ErrorMsg = ({ titleABC, messageABC, errorHandlerBtnABC }) => {
+    return <div className={classes.backdrop} >
         <Card className={classes.modal}>
             <header className={classes.header}>
                 <h2>
@@ -14,7 +14,7 @@ const ErrorMsg = ({ titleABC, messageABC }) => {
                 {messageABC}
             </main>
             <footer className={classes.actions}>
-                <Button> Okay </Button>
+                <Button onClick={errorHandlerBtnABC}> Okay </Button>
             </footer>
         </Card>
     </div>
