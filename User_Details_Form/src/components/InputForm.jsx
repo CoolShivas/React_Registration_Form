@@ -2,56 +2,43 @@ import ErrorMsg from "../UI/ErrorMsg";
 import Button from "../UI/Button";
 import classes from "./InputForm.module.css";
 import Card from "../UI/Card";
-import { useState } from "react";
+import { useState, useRef } from "react";
 // import styles from "./InputForm.module.css";
 
 
 const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
-    const [valUser, setUser] = useState('');
-    const [valNumber, setNumber] = useState('');
-
     const [error, setError] = useState();
 
-    const handleOnChangeUserName = (event) => {
-        console.log(event.target.value);
-        setUser(event.target.value);
-    }
+    const userNameRef = useRef();
+    const ageRef = useRef();
+    const collegeNameRef = useRef();
 
-    const handleOnChangeNumber = (event) => {
-        console.log(event.target.value);
-        setNumber(event.target.value);
-    }
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        console.log('submitted')
-        // if (valUser.trim().length === 0 || valNumber.trim().length === 0) {
-        //     setFieldBlankColor(false);
-        //     return;
-        // }
-        // if (+valNumber < 1) {
-        //     setFieldBlankColor(false);
-        //     return;
-        // }
+        const userName = userNameRef.current.value;
+        const ageYear = ageRef.current.value;
+        const collegeName = collegeNameRef.current.value;
 
-        if (valUser.trim().length === 0 || valNumber.trim().length === 0) {
+        if (userName.trim().length === 0 || ageYear.trim().length === 0 || collegeName.trim().length === 0) {
             setError({
                 title: "Invalid Input",
-                message: "Please enter a valid name and age (non-empty values).",
+                message: "Please enter a full details.",
             })
             return;
         }
-        if (+valNumber < 1) {
+        if (+ageYear < 1) {
             setError({
                 title: "Invalid number",
                 message: "Please enter a valid age (>0)."
             })
             return;
         }
-        handleOnAddDetailsOnBtnABC(valUser, valNumber);
-        setUser('');
-        setNumber('');
+        handleOnAddDetailsOnBtnABC(userName, ageYear, collegeName);
+        userNameRef.current.value = '';
+        ageRef.current.value = '';
+        collegeNameRef.current.value = '';
 
     }
 
@@ -66,6 +53,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
             messageABC={error.message}
             errorHandlerBtnABC={errorHandlerBtn}
         ></ErrorMsg>}
+
         <Card className={`${classes.input} ${classes.button}`}>
             <form onSubmit={handleOnSubmit}>
                 <div className="main_div">
@@ -76,8 +64,7 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
 
                     <div>
                         <input type="text" id="username"
-                            onChange={handleOnChangeUserName}
-                            value={valUser}
+                            ref={userNameRef}
                         />
                     </div>
 
@@ -87,13 +74,23 @@ const InputForm = ({ handleOnAddDetailsOnBtnABC }) => {
                     </div>
 
                     <div>
-                        <input type="number" id="age" onChange={handleOnChangeNumber} value={valNumber}
+                        <input type="number" id="age"
+                            ref={ageRef}
                         />
                     </div>
 
                     <div>
-                        {/* <button type="submit"> Add Details </button> */}
+                        <label htmlFor="collegename"
+                        > College Name </label>
+                    </div>
 
+                    <div>
+                        <input type="text" id="collegename"
+                            ref={collegeNameRef}
+                        />
+                    </div>
+
+                    <div>
                         <Button type="submit"> Add Details </Button>
                     </div>
                 </div>

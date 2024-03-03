@@ -2,7 +2,7 @@ import classes from "./ListOfUsers.module.css";
 import Card from "../UI/Card";
 import IndividualUser from "./IndividualUser";
 
-const ListOfUsers = ({ detailsOfUsersABC, nameABC, ageABC }) => {
+const ListOfUsers = ({ detailsOfUsersABC }) => {
 
     return <Card className={classes.list_of_users}>
         <ul>
@@ -11,6 +11,7 @@ const ListOfUsers = ({ detailsOfUsersABC, nameABC, ageABC }) => {
                     key={arr.name}
                     nameXYZ={arr.name}
                     ageXYZ={arr.age}
+                    collegeXYZ={arr.college}
                 />
             })}
 

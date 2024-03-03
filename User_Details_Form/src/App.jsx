@@ -7,18 +7,19 @@ import ListOfUsers from "./components/ListOfUsers";
 function App() {
 
   const detailsOfUsers = [
-    { name: "sam", age: 25 },
-    { name: "john", age: 15 },
-    { name: "methew", age: 35 },
+    { name: "sam", age: 25, college: "Jiwaji University" },
+    { name: "john", age: 15, college: "RGPV University" },
+    { name: "methew", age: 35, college: "Sagar University" },
   ];
 
   const [valDetails, setDetails] = useState(detailsOfUsers);
 
-  const handleOnAddDetailsOnBtn = (name, age) => {
-    console.log(`Details are ${name} and ${age}`);
+  const handleOnAddDetailsOnBtn = (name, age, college) => {
+    console.log(`Details are ${name} and ${age} and ${college}`);
     const dataFill = [...valDetails, {
       name: name,
       age: age,
+      college: college,
     }]
     setDetails(dataFill);
   }

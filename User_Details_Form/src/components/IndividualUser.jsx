@@ -1,6 +1,6 @@
 // import styles from "./IndividualUser.module.css";
 
-const IndividualUser = ({ nameXYZ, ageXYZ }) => {
+const IndividualUser = ({ nameXYZ, ageXYZ, collegeXYZ }) => {
     // return <div className={styles.individual}>
 
     //     {/* <div> {nameXYZ} </div>
@@ -10,7 +10,7 @@ const IndividualUser = ({ nameXYZ, ageXYZ }) => {
 
     // </div>
 
-    return <li> {nameXYZ} {ageXYZ} years old. </li>
+    return <li> {nameXYZ} {ageXYZ} years old and studies in {collegeXYZ}. </li>
 }
 
 export default IndividualUser;
